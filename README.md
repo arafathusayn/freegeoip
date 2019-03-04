@@ -1,9 +1,5 @@
 # freegeoip
 
-**NOTE:** as of April 2018 this repository is no longer active. Please visit https://github.com/apilayer/freegeoip/ for the current version.
-
----
-
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 This is the source code of the freegeoip software. It contains both the web server that empowers freegeoip.net, and a package for the [Go](http://golang.org) programming language that enables any web server to support IP geolocation with a simple and clean API.
@@ -29,7 +25,7 @@ including
 #### Run the API in a container
 
 ```bash
-docker run --restart=always -p 8080:8080 -d fiorix/freegeoip
+docker run --restart=always -p 8080:8080 -d arafathusayn/freegeoip
 ```
 
 #### Test
@@ -41,7 +37,7 @@ curl localhost:8080/json/1.2.3.4
 
 ### Other Linux, OS X, FreeBSD, and Windows
 
-There are [pre-compiled binaries](https://github.com/fiorix/freegeoip/releases) available.
+There are [pre-compiled binaries](https://github.com/arafathusayn/freegeoip/releases) available.
 
 ### Production configuration
 
@@ -71,13 +67,13 @@ For automation, check out the [freegeoip chef cookbook](https://supermarket.chef
 To see all the available options, use the `-help` option:
 
 ```bash
-docker run --rm -it fiorix/freegeoip -help
+docker run --rm -it arafathusayn/freegeoip -help
 ```
 
 If you're using LetsEncrypt.org to provision your TLS certificates, you have to listen for HTTPS on port 443. Following is an example of the server listening on 3 different ports: metrics + pprof (8888), http (80), and https (443):
 
 ```bash
-docker run -p 8888:8888 -p 80:8080 -p 443:8443 -d fiorix/freegeoip \
+docker run -p 8888:8888 -p 80:8080 -p 443:8443 -d arafathusayn/freegeoip \
 	-internal-server=:8888 \
 	-http=:8080 \
 	-https=:8443 \
@@ -97,7 +93,7 @@ FREEGEOIP_HSTS=max-age=31536000
 FREEGEOIP_LETSENCRYPT=true
 FREEGEOIP_LETSENCRYPT_HOSTS=myfancydomain.io
 
-$ docker run --env-file=prod.env -p 8888:8888 -p 80:8080 -p 443:8443 -d fiorix/freegeoip
+$ docker run --env-file=prod.env -p 8888:8888 -p 80:8080 -p 443:8443 -d arafathusayn/freegeoip
 ```
 
 By default, HTTP/2 is enabled over HTTPS. You can disable by passing the `-http2=false` flag.
@@ -167,9 +163,9 @@ tl;dr if all you want is code then see the `example_test.go` file.
 
 Otherwise check out the godoc reference.
 
-[![GoDoc](https://godoc.org/github.com/fiorix/freegeoip?status.svg)](https://godoc.org/github.com/fiorix/freegeoip)
-[![Build Status](https://secure.travis-ci.org/fiorix/freegeoip.png)](http://travis-ci.org/fiorix/freegeoip)
-[![GoReportCard](https://goreportcard.com/badge/github.com/fiorix/freegeoip)](https://goreportcard.com/report/github.com/fiorix/freegeoip)
+[![GoDoc](https://godoc.org/github.com/arafathusayn/freegeoip?status.svg)](https://godoc.org/github.com/arafathusayn/freegeoip)
+[![Build Status](https://secure.travis-ci.org/arafathusayn/freegeoip.png)](http://travis-ci.org/arafathusayn/freegeoip)
+[![GoReportCard](https://goreportcard.com/badge/github.com/arafathusayn/freegeoip)](https://goreportcard.com/report/github.com/arafathusayn/freegeoip)
 
 ### Features
 
@@ -189,10 +185,10 @@ Besides the database part, the package provides an `http.Handler` object that yo
 
 Download the package:
 
-	go get -d github.com/fiorix/freegeoip/...
+	go get -d github.com/arafathusayn/freegeoip/...
 
 Install the web server:
 
-	go install github.com/fiorix/freegeoip/cmd/freegeoip
+	go install github.com/arafathusayn/freegeoip/cmd/freegeoip
 
 Test coverage is quite good, and test code may help you find the stuff you need.
