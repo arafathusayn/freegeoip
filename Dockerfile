@@ -1,10 +1,10 @@
-FROM golang:1.9
+FROM golang:1.12
 
 COPY cmd/freegeoip/public /var/www
 
-ADD . /go/src/github.com/fiorix/freegeoip
+ADD . /go/src/github.com/arafathusayn/freegeoip
 RUN \
-	cd /go/src/github.com/fiorix/freegeoip/cmd/freegeoip && \
+	cd /go/src/github.com/arafathusayn/freegeoip/cmd/freegeoip && \
 	go get -d && go install && \
 	apt-get update && apt-get install -y libcap2-bin && \
 	setcap cap_net_bind_service=+ep /go/bin/freegeoip && \
